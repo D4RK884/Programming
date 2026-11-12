@@ -9,15 +9,14 @@ int main() {
         return 1;
     }
 
-    // Порядок проверок важен: сначала самые "сильные" правила
     if (year % 400 == 0) {
-        printf("YES\n");          // делится на 400 - високосный
+        printf("YES\n"); 
     } else if (year % 100 == 0) {
-        printf("NO\n");           // делится на 100 (но не на 400) - не високосный
+        printf("NO\n");        
     } else if (year % 4 == 0) {
-        printf("YES\n");          // делится на 4 (но не на 100) - високосный
+        printf("YES\n");       
     } else {
-        printf("NO\n");           // все остальные - не високосные
+        printf("NO\n"); 
     }
 
     return 0;
