@@ -108,3 +108,4 @@
 
 ### Пункт 17. Две ветки на GitHub
 После `git push -u origin mybranch` и `git push` на github.com отображаются обе ветки: main и mybranch.
+![ветки на GitHub](images/br_p17.png)
