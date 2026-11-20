@@ -195,4 +195,186 @@ git status
 git push
 ```
 
-<!-- Вставь сюда скриншот git push и git status после него -->
+## Ветки и ff-merge
+
+Этот блок выполнен на ветке `main`, потому что в конце нужно влить изменения в главную ветку.
+
+### Шаг 1. Создаём greeting.txt и коммитим
+
+```bash
+touch lab9_git/greeting.txt
+git add lab9_git/greeting.txt
+git commit -m "Add file greeting.txt"
+```
+
+![создание greeting.txt](screenshots/grade4/b01_greeting_create.png)
+
+Файл создан пустым. В `git status` он был в «Untracked files», после `git add` и `git commit` попал в историю.
+
+### Шаг 2. Добавляем слово hello
+
+```bash
+echo "hello" > lab9_git/greeting.txt
+git add lab9_git/greeting.txt
+git commit -m "Add content to greeting.txt"
+```
+
+![hello в greeting.txt](screenshots/grade4/b02_greeting_hello.png)
+
+В файл записано `hello`, изменение закоммичено вторым коммитом.
+
+### Шаги 3-4. Создаём ветку feature/uppercase и переключаемся на неё
+
+```bash
+git branch feature/uppercase
+git switch feature/uppercase
+```
+
+![создание ветки и переключение](screenshots/grade4/b03_branch_switch.png)
+
+`git branch` создал ветку, но не переключился на неё. Переключение сделал `git switch`.
+
+### Шаг 5. git status
+
+```bash
+git status
+```
+
+![git status на feature/uppercase](screenshots/grade4/b05_status_feature.png)
+
+Первая строка вывода `On branch feature/uppercase`: я на новой ветке.
+
+### Шаги 6-7. Меняем hello на HELLO и коммитим
+
+Содержимое `greeting.txt` заменено на `HELLO`.
+
+```bash
+git add lab9_git/greeting.txt
+git commit -m "Hello в верхнем регистре"
+```
+
+![коммит HELLO](screenshots/grade4/b07_commit_uppercase.png)
+
+Коммит создан в ветке `feature/uppercase`: она указана в квадратных скобках.
+
+### Шаг 8. git branch
+
+```bash
+git branch
+```
+
+![git branch](screenshots/grade4/b08_branch.png)
+
+Звёздочка стоит у `feature/uppercase`, значит, это текущая ветка. В списке также `main` и `mybranch`.
+
+### Шаг 9. git log --oneline --graph --all
+
+```bash
+git log --oneline --graph --all
+```
+
+![git log --graph --all](screenshots/grade4/b09_log_graph.png)
+
+`feature/uppercase` на один коммит впереди `main`. Ветки пока не разошлись, поэтому линия графа прямая.
+
+### Шаги 10-11. Переключаемся на main и смотрим файл
+
+```bash
+git switch main
+cat lab9_git/greeting.txt
+```
+
+![switch main и cat](screenshots/grade4/b10_11_switch_main_cat.png)
+
+В `main` файл содержит `hello` строчными: изменение сделано в другой ветке и сюда ещё не слито. Первая команда `cat greeting.txt` не сработала из-за пути: файл лежит в папке `lab9_git`.
+
+### Шаг 12. Сравниваем ветки
+
+```bash
+git diff main feature/uppercase
+```
+
+![git diff между ветками](screenshots/grade4/b12_diff.png)
+
+Единственное различие между ветками: строчное `hello` (`-`) заменено на заглавное `HELLO` (`+`).
+
+### Шаг 13. Объединяем ветки
+
+```bash
+git merge feature/uppercase
+```
+
+![git merge feature/uppercase](screenshots/grade4/b13_merge_ff.png)
+
+Слияние прошло как fast-forward: после создания `feature/uppercase` в `main` не было новых коммитов, поэтому git просто передвинул указатель `main` вперёд. Отдельный коммит слияния не создавался.
+
+### Шаг 14. Содержимое файла после слияния
+
+```bash
+cat lab9_git/greeting.txt
+```
+
+![cat после слияния](screenshots/grade4/b14_cat_upper.png)
+
+Теперь в `main` файл содержит `HELLO`.
+
+### Шаг 15. Удаляем ветку feature/uppercase
+
+```bash
+git branch -d feature/uppercase
+git branch
+```
+
+![удаление ветки](screenshots/grade4/b15_branch_delete.png)
+
+Ветка удалена, потому что её изменения уже есть в `main`. Остались `main` и `mybranch`.
+
+### Шаг 16. Сливаем mybranch в main (с конфликтом)
+
+```bash
+git merge mybranch
+```
+
+![git merge mybranch](screenshots/grade4/b16_merge_conflict.png)
+
+Ветки разошлись, поэтому слияние не fast-forward. Git автоматически слил все файлы, кроме корневого `README.md`: его строка менялась и в `main` (на сайте GitHub), и в `mybranch`. Возник конфликт.
+
+В VSCode файл выглядел так:
+
+![маркеры конфликта](screenshots/grade4/b16_conflict_markers.png)
+
+Между `<<<<<<< HEAD` и `=======` версия из `main`, между `=======` и `>>>>>>> mybranch` версия из `mybranch`. Я выбрал «Принять текущее изменение», маркеры исчезли:
+
+![конфликт разрешён](screenshots/grade4/b16_conflict_resolved.png)
+
+Затем файл добавлен в индекс и слияние закоммичено:
+
+```bash
+git add README.md
+git commit --no-edit
+```
+
+### Шаг 17. git log --oneline --graph --all
+
+```bash
+git log --oneline --graph --all
+```
+
+![журнал после слияния](screenshots/grade4/b17_log_merge.png)
+
+Наверху коммит слияния `Merge branch 'mybranch'` с двумя родителями. На графе видно, что `main` и `mybranch` разошлись после коммита `izm nazv README.md`, а теперь сходятся в одном коммите. Строка `:...skipping...` появилась из-за постраничного просмотра.
+
+### Шаг 18. Push ветки main
+
+```bash
+git push
+```
+
+![git push main](screenshots/grade4/b18_push.png)
+
+Ветка `main` отправлена на GitHub (`main -> main`): ушли коммиты с `greeting.txt` и коммит слияния.
+
+### Шаг 19. Документ с результатами
+
+Отчёт добавлен в репозиторий и запушен.
+
