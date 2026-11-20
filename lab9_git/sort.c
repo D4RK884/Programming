@@ -1,15 +1,18 @@
-void bubble_sort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - 1 - i; j++) {
-            if (arr[j] > arr[j + 1]) {
-                int tmp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = tmp;
+#include <stdio.h>
+
+void bubble_sort(int *a, int n) {
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (a[j] > a[j + 1]) {
+                int t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
             }
-        }
-    }
 }
 
-// это комментарий
-// SIBIR
-// СИБИРЬ
+int main() {
+    int a[] = {4, 2};
+    int n = sizeof(a) / sizeof(a[0]);
+    bubble_sort(a, n);
+    return 0;
+}
