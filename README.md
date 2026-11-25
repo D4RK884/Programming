@@ -22,6 +22,6 @@ Eng: There are currently two branches: `main` and `mybranch`. The latter was cre
 <br>
 
 <p align="center">
-  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJ1bmY2MmlsemxydmRzYWZja3cxdDlidHE2enpxaGMwaWh5MWhjbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mF5rEQLktb35SAsxYN/giphy.gif" alt="HC Sibir Logo" width="250">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTIyNXVqazVqZzYxYWk0cGR5eTNqZDE4c3VmeXRrMXFlcTA3enI1MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/QAgin9e3agVetGT5qm/giphy.gif" alt="Hockey Player" width="250">
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJ1bmY2MmlsemxydmRzYWZja3cxdDlidHE2enpxaGMwaWh5MWhjbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mF5rEQLktb35SAsxYN/giphy.gif" alt="HC Sibir Logo" width="450">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTIyNXVqazVqZzYxYWk0cGR5eTNqZDE4c3VmeXRrMXFlcTA3enI1MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/QAgin9e3agVetGT5qm/giphy.gif" alt="Hockey Player" width="450">
 </p>
