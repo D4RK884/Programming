@@ -1,4 +1,9 @@
-# Programming
+# Programming💜
+## Для удобства ниже лабораторные работы
+* [Лабораторная работа №8](./lab08)
+* [Лабораторная работа №9 (Git)](./lab09_git)
+* [Лабораторная работа №10 (Многофайловый проект)](./lab10_gitus)
+
 ## Что это? What is this? ❄️⛄
 Ru: Репозиторий студента 1 курса СибГУТИ.
 
@@ -13,11 +18,6 @@ Eng: This branch—which is the main one—contains the laboratory assignments, 
 Ru: Есть пока что две ветви - `main`, `mybranch`. Вторая создалась из-за задания в 9 лабораторной(так что ее можно не читать, если только проверять). Все лабы, файлы и прочее будет грузится в ветвь `main`.
 
 Eng: There are currently two branches: `main` and `mybranch`. The latter was created for an assignment in Lab 9 (so you don’t need to look at it, unless you’re grading it). All labs, files, and other materials will be uploaded to the `main` branch.
-
-## Лабораторные работы
-* [Лабораторная работа №8](./lab08)
-* [Лабораторная работа №9 (Git)](./lab09_git)
-* [Лабораторная работа №10 (Многофайловый проект)](./lab10_gitus)
 
 <br>
 
